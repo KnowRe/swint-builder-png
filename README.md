@@ -3,6 +3,9 @@ PNG sprite builder for Swint
 
 **Warning: This is not the final draft yet, so do not use this until its official version is launched**
 
+## Dependency
+[ImageMagicK](http://www.imagemagick.org/) should be installed and able to execute `$ convert` and `$ montage` on the command line
+
 ## Installation
 ```sh
 $ npm install --save swint-builder-png
