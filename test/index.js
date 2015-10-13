@@ -5,6 +5,8 @@ var os = require('os'),
 	swintHelper = require('swint-helper'),
 	buildPNG = require('../lib');
 
+global.swintVar.printLevel = 5;
+
 describe('builder-png', function() {
 	it('Error when no callback', function() {
 		assert.throws(function() {
