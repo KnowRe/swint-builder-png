@@ -5,7 +5,7 @@ var os = require('os'),
 	swintHelper = require('swint-helper'),
 	buildPNG = require('../lib');
 
-global.swintVar.printLevel = 5;
+// global.swintVar.printLevel = 5;
 
 describe('builder-png', function() {
 	it('Error when no callback', function() {
@@ -30,15 +30,27 @@ describe('builder-png', function() {
 			imgMetaDir: path.join(os.tmpdir(), 'swint-builder-png-meta'),
 			outDir: path.join(os.tmpdir(), 'swint-builder-png-out')
 		}, function(err, res) {
-			assert.deepEqual(
-				fs.readFileSync(path.join(__dirname, '../test_result/meta/flags.meta.json')),
-				fs.readFileSync(path.join(os.tmpdir(), 'swint-builder-png-meta/flags.meta.json'))
-			);
+			var flagExpected = JSON.parse(fs.readFileSync(path.join(__dirname, '../test_result/meta/flags.meta.json'), 'utf-8')).map(function(r) {
+					delete r.timeStamp;
+					return r;
+				}),
+				flagResult = JSON.parse(fs.readFileSync(path.join(os.tmpdir(), 'swint-builder-png-meta/flags.meta.json'), 'utf-8')).map(function(r) {
+					delete r.timeStamp;
+					return r;
+				});
 
-			assert.deepEqual(
-				fs.readFileSync(path.join(__dirname, '../test_result/meta/browsers.meta.json')),
-				fs.readFileSync(path.join(os.tmpdir(), 'swint-builder-png-meta/browsers.meta.json'))
-			);
+			assert.deepEqual(flagExpected, flagResult);
+
+			var browserExpected = JSON.parse(fs.readFileSync(path.join(__dirname, '../test_result/meta/browsers.meta.json'), 'utf-8')).map(function(r) {
+					delete r.timeStamp;
+					return r;
+				}),
+				browserResult = JSON.parse(fs.readFileSync(path.join(os.tmpdir(), 'swint-builder-png-meta/browsers.meta.json'), 'utf-8')).map(function(r) {
+					delete r.timeStamp;
+					return r;
+				});
+
+			assert.deepEqual(browserExpected, browserResult);
 
 			assert.deepEqual(
 				fs.readFileSync(path.join(__dirname, '../test_result/out/flags.png')),
