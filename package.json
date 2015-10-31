@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "eslint": "*",
+    "get-pixels": "^3.2.3",
     "mocha": "*"
   }
 }

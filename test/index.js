@@ -3,11 +3,14 @@ var os = require('os'),
 	path = require('path'),
 	assert = require('assert'),
 	swintHelper = require('swint-helper'),
+	getPixels = require("get-pixels"),
 	buildPNG = require('../lib');
 
-// global.swintVar.printLevel = 5;
+global.swintVar.printLevel = 5;
 
 describe('builder-png', function() {
+	this.timeout(20000);
+
 	it('Error when no callback', function() {
 		assert.throws(function() {
 			buildPNG({});
@@ -52,16 +55,18 @@ describe('builder-png', function() {
 
 			assert.deepEqual(browserExpected, browserResult);
 
-			assert.deepEqual(
-				fs.readFileSync(path.join(__dirname, '../test_result/out/flags.png')),
-				fs.readFileSync(path.join(os.tmpdir(), 'swint-builder-png-out/flags.png'))
-			);
+			getPixels(path.join(__dirname, '../test_result/out/flags.png'), function(err, flagPixelsExpected) {
+				getPixels(path.join(os.tmpdir(), 'swint-builder-png-out/flags.png'), function(err, flagPixelsResult) {
+					getPixels(path.join(__dirname, '../test_result/out/browsers.png'), function(err, browserPixelsExpected) {
+						getPixels(path.join(os.tmpdir(), 'swint-builder-png-out/browsers.png'), function(err, browserPixelsResult) {
+							assert.deepEqual(flagPixelsExpected, flagPixelsResult);
+							assert.deepEqual(browserPixelsExpected, browserPixelsResult);
 
-			assert.deepEqual(
-				fs.readFileSync(path.join(__dirname, '../test_result/out/browsers.png')),
-				fs.readFileSync(path.join(os.tmpdir(), 'swint-builder-png-out/browsers.png'))
-			);
-			done();
+							done();
+						});
+					});
+				});
+			});
 		});
 	});
 
