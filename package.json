@@ -1,6 +1,6 @@
 {
   "name": "swint-builder-png",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "PNG sprite builder for Swint",
   "main": "lib/index.js",
   "scripts": {
