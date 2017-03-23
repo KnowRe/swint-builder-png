@@ -29,11 +29,11 @@
   "dependencies": {
     "async": "2.1.5",
     "sprintf": "0.1.5",
-    "swint-helper": "1.2.2"
+    "swint-helper": "1.2.3"
   },
   "devDependencies": {
     "mocha": "3.2.0",
-    "eslint": "3.17.0",
+    "eslint": "3.18.0",
     "get-pixels": "3.3.0"
   }
 }
