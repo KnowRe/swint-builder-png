@@ -27,13 +27,13 @@
   },
   "homepage": "https://github.com/KnowRe-Dev/swint-builder-png",
   "dependencies": {
-    "async": "^2.5.0",
-    "sprintf": "^0.1.5",
-    "swint-helper": "^1.2.7"
+    "async": "2.5.0",
+    "sprintf": "0.1.5",
+    "swint-helper": "1.2.7"
   },
   "devDependencies": {
-    "eslint": "^4.6.1",
-    "get-pixels": "^3.3.0",
-    "mocha": "^3.5.3"
+    "eslint": "4.7.0",
+    "get-pixels": "3.3.0",
+    "mocha": "3.5.3"
   }
 }
