@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/KnowRe-Dev/swint-builder-png",
   "dependencies": {
-    "async": "2.5.0",
+    "async": "2.6.0",
     "sprintf": "0.1.5",
     "swint-helper": "1.2.7"
   },
